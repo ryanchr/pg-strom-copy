@@ -1,0 +1,18 @@
+BEGIN;
+
+	CREATE TABLE PART (
+
+		P_PARTKEY		SERIAL PRIMARY KEY,
+		P_NAME			VARCHAR(55),
+		P_MFGR			CHAR(25),
+		P_BRAND			CHAR(10),
+		P_TYPE			VARCHAR(25),
+		P_SIZE			INTEGER,
+		P_CONTAINER		CHAR(10),
+		P_RETAILPRICE	DECIMAL,
+		P_COMMENT		VARCHAR(23)
+	);
+
+	COPY part FROM '/home/postgres/pgstrom/tpch_db_test/data1G/part.csv' WITH (FORMAT csv, DELIMITER '|');
+
+COMMIT;

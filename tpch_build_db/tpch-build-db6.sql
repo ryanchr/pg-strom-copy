@@ -1,0 +1,15 @@
+
+BEGIN;
+
+	CREATE TABLE PARTSUPP (
+		PS_PARTKEY		BIGINT NOT NULL, 
+		PS_SUPPKEY		BIGINT NOT NULL, 
+		PS_AVAILQTY		INTEGER,
+		PS_SUPPLYCOST	DECIMAL,
+		PS_COMMENT		VARCHAR(199),
+                PRIMARY KEY (PS_PARTKEY, PS_SUPPKEY)
+	);
+
+	COPY partsupp FROM '/home/postgres/pgstrom/tpch_db_test/data1G/partsupp.csv' WITH (FORMAT csv, DELIMITER '|');
+
+COMMIT;
